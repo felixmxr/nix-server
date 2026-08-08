@@ -22,7 +22,7 @@ in
     snapraid-btrfs
   ];
 
- services.snapraid = {
+  services.snapraid = {
     enable = true;
 
     dataDisks = {
@@ -52,7 +52,10 @@ in
     data1 = {
       SUBVOLUME = "/mnt/data/data1";
       FSTYPE = "btrfs";
-
+  
+      ALLOW_GROUPS = [ "storage" ];
+      SYNC_ACL = true;
+    
       TIMELINE_CREATE = false;
       TIMELINE_CLEANUP = false;
     };
@@ -60,6 +63,9 @@ in
     data2 = {
       SUBVOLUME = "/mnt/data/data2";
       FSTYPE = "btrfs";
+
+      ALLOW_GROUPS = [ "storage" ];
+      SYNC_ACL = true;
 
       TIMELINE_CREATE = false;
       TIMELINE_CLEANUP = false;

@@ -13,7 +13,7 @@
     #../../modules/services/nextcloud.nix
   ];
 
-  networking.hostName = "homeserver";
+  networking.hostName = "nix-server";
 
   system.stateVersion = "26.05";
 }
