@@ -18,7 +18,24 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "snapraid-btrfs": "snapraid-btrfs"
+      }
+    },
+    "snapraid-btrfs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1701102981,
+        "narHash": "sha256-YPkKjlx7j7yjTWReAvgaFNz6dFxVIcaN9to2cDfmovU=",
+        "owner": "automorphism88",
+        "repo": "snapraid-btrfs",
+        "rev": "6492a45ad55c389c0301075dcc8bc8784ef3e274",
+        "type": "github"
+      },
+      "original": {
+        "owner": "automorphism88",
+        "repo": "snapraid-btrfs",
+        "type": "github"
       }
     }
   },

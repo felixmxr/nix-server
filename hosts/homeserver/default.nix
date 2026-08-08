@@ -6,7 +6,7 @@
 
     ../../modules/base.nix
     ../../modules/storage.nix
-    #../../modules/networking.nix
+    ../../modules/snapraid.nix
 
     #../../modules/services/plex.nix
     #../../modules/services/immich.nix
