@@ -9,6 +9,8 @@
     ../../modules/snapraid.nix
     ../../modules/plex.nix
     ../../modules/cloudflare.nix
+    ../../modules/vaultwarden.nix
+    ../../modules/smtptotelegram.nix
 
     #../../modules/services/immich.nix
     #../../modules/services/nextcloud.nix
