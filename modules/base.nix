@@ -10,6 +10,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [
+    "pcie_aspm=force"
+  ];
+
+
   nix.settings.auto-optimise-store = true;
 
   nix.gc = {
@@ -29,8 +34,11 @@
     };
   };
 
+  nixpkgs.config.allowUnfree = true; 
+
   environment.systemPackages = with pkgs; [
     git
+    gh
     vim
     htop
     btop
@@ -38,8 +46,20 @@
     curl
     wget
     smartmontools
+    powertop
+    pciutils
     tree
   ];
+
+  programs.nano = {
+    enable = true;
+    nanorc = ''
+      set tabsize 2
+      set tabstospaces
+    '';
+  };
+
+  powerManagement.powertop.enable = true;
 
   programs.bash.loginShellInit = ''
     if [ "$USER" = "felix" ]; then
@@ -52,8 +72,6 @@
     rebuild-test = "sudo nixos-rebuild test --flake ~/nix-server#nix-server";
   };
 
-  services.smartd.enable = true;
-  
   users.groups.storage = {};
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."felix" = {

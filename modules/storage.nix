@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     mergerfs
+    hdparm
   ];
 
   fileSystems."/mnt/data/data1" = {
@@ -37,14 +38,14 @@
     fsType = "btrfs";
   };
 
-/*  fileSystems."/mnt/oldcache" = {
+  fileSystems."/mnt/oldcache" = {
     device = "/dev/disk/by-label/cache";
     fsType = "btrfs";
   };
   fileSystems."/mnt/olddrive" = {
     device = "/dev/disk/by-uuid/f1b4ee78-b80f-48b3-8d78-d9605e7d88c3";
     fsType = "ext4";
-  };*/
+  };
 
 
   fileSystems."/mnt/pool" = {
@@ -80,6 +81,28 @@
       "uid=1000"
       "gid=1000"
     ];
+  };
+
+  systemd.services.hdd-spindown = {
+    description = "Configure HDD spindown";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "local-fs.target" ];
+
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+
+    script = ''
+      ${pkgs.hdparm}/bin/hdparm -S 60 /dev/sdb
+      ${pkgs.hdparm}/bin/hdparm -S 60 /dev/sdc
+      ${pkgs.hdparm}/bin/hdparm -S 60 /dev/sdd
+    '';
+  };
+
+  services.smartd = {
+    enable = true;
+    extraOptions = [ "-n" "standby" ];
   };
 
 }

@@ -7,8 +7,8 @@
     ../../modules/base.nix
     ../../modules/storage.nix
     ../../modules/snapraid.nix
+    ../../modules/plex.nix
 
-    #../../modules/services/plex.nix
     #../../modules/services/immich.nix
     #../../modules/services/nextcloud.nix
   ];
