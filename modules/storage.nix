@@ -60,8 +60,6 @@
       "moveonenospc=1"
       "use_ino"
       "minfreespace=50G"
-      "uid=1000"
-      "gid=1000"
     ];
   };
 
@@ -78,8 +76,6 @@
       "moveonenospc=1"
       "use_ino"
       "minfreespace=250G"
-      "uid=1000"
-      "gid=1000"
     ];
   };
 

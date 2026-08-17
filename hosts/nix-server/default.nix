@@ -11,6 +11,7 @@
     ../../modules/cloudflare.nix
     ../../modules/vaultwarden.nix
     ../../modules/smtptotelegram.nix
+    ../../modules/arr.nix
 
     #../../modules/services/immich.nix
     #../../modules/services/nextcloud.nix
